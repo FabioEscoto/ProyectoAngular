@@ -1,0 +1,16 @@
+<div class="card p-4 shadow-sm">
+  <h3 class="text-primary">Listado de Frameworks</h3>
+
+  <ul class="list-group mb-3">
+    <li class="list-group-item" *ngFor="let item of elementos">
+      {{ item }}
+    </li>
+  </ul>
+
+  <form (submit)="agregarElemento(nuevo.value); nuevo.value=''; $event.preventDefault()">
+    <div class="input-group">
+      <input #nuevo type="text" class="form-control" placeholder="Agregar nuevo elemento">
+      <button class="btn btn-success" type="submit">Agregar</button>
+    </div>
+  </form>
+</div>
