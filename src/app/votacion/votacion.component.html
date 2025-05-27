@@ -1,0 +1,13 @@
+<h2>Votación</h2>
+
+<input [(ngModel)]="nuevoNombre" placeholder="Nuevo elemento">
+<button (click)="agregar()">Agregar</button>
+
+<ul>
+  <li *ngFor="let elem of elementos; let i = index">
+    {{ elem.nombre }} - Votos: {{ elem.votos }}
+    <button (click)="votar(i)">👍</button>
+    <button (click)="votarNegativo(i)">👎</button>
+  </li>
+</ul>
+

@@ -1,0 +1,10 @@
+<h2>Componente Padre</h2>
+
+<app-child (datosEnviados)="recibirDatos($event)"></app-child>
+
+<div *ngIf="datosRecibidos">
+  <p><strong>Nombre:</strong> {{ datosRecibidos.nombre }}</p>
+  <p><strong>Edad:</strong> {{ datosRecibidos.edad }}</p>
+</div>
+
+

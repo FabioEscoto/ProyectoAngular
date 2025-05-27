@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="enviar()">
+  <div>
+    <label>Nombre:</label>
+    <input type="text" formControlName="nombre" />
+    <div *ngIf="tieneError('nombre', 'required')">El nombre es requerido.</div>
+    <div *ngIf="tieneError('nombre', 'minlength')">Debe tener al menos 3 caracteres.</div>
+  </div>
+
+  <div>
+    <label>Edad:</label>
+    <input type="number" formControlName="edad" />
+    <div *ngIf="tieneError('edad', 'required')">La edad es requerida.</div>
+    <div *ngIf="tieneError('edad', 'edadInvalida')">Debe tener al menos 18 años.</div>
+  </div>
+
+  <button type="submit">Enviar</button>
+</form>
+
+
