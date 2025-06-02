@@ -1,10 +1,13 @@
+// src/main.ts
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { provideRouter } from '@angular/router';
-import { routes } from './app/app.routes';
+import { API_BASE_URL } from './app/app-config.token';
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(routes)]
+  providers: [
+    { provide: API_BASE_URL, useValue: 'http://localhost:3000/api' }
+  ]
 });
+
 
 

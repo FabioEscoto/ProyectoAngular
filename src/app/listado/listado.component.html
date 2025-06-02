@@ -1,6 +1,8 @@
-<app-child (evento)="manejarEvento($event)"></app-child>
+<input #nuevo placeholder="Nuevo elemento">
+<button (click)="agregar(nuevo.value); nuevo.value = ''">Agregar</button>
 
 <ul>
-  <li *ngFor="let item of elementos">{{ item }}</li>
+  <li *ngFor="let item of elementos$ | async">{{ item }}</li>
 </ul>
+
 

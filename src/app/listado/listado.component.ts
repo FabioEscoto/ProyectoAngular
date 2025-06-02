@@ -1,28 +1,21 @@
-import { Component, HostBinding } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ChildComponent } from '../child/child.component'; // ✅ Importa el hijo si lo usas en el template
+// src/app/listado/listado.component.ts
+import { Component, inject, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-listado',
   standalone: true,
   templateUrl: './listado.component.html',
   styleUrls: ['./listado.component.css'],
-  imports: [CommonModule, ChildComponent] // ✅ importa el hijo si lo usas aquí
 })
-export class ListadoComponent {
-  @HostBinding('class') class = 'd-block mt-4';
+export class ListadoComponent implements OnInit {
+  private store = inject(Store<{ votacion: string[] }>);
+  elementos$: Observable<string[]> = this.store.select('votacion');
 
-  elementos: string[] = ['Angular', 'React', 'Vue'];
+  ngOnInit() {}
 
-  agregarElemento(valor: string) {
-    if (valor.trim()) {
-      this.elementos.push(valor.trim());
-    }
-  }
-
-  // ✅ Agrega este método para resolver el error
-  manejarEvento(evento: any) {
-    console.log('Evento recibido:', evento);
-    // Aquí puedes hacer algo con los datos, como agregarlos a `elementos` si lo deseas.
+  agregar(nombre: string) {
+    // Aquí puedes llamar al servicio que agrega y despacha
   }
 }
