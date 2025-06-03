@@ -1,6 +1,7 @@
-// src/app/listado/listado.component.ts
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostBinding, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { CommonModule } from '@angular/common';
+import { selectTracking } from '../state/tracking.selectors';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,14 +9,11 @@ import { Observable } from 'rxjs';
   standalone: true,
   templateUrl: './listado.component.html',
   styleUrls: ['./listado.component.css'],
+  imports: [CommonModule]
 })
-export class ListadoComponent implements OnInit {
-  private store = inject(Store<{ votacion: string[] }>);
-  elementos$: Observable<string[]> = this.store.select('votacion');
+export class ListadoComponent {
+  @HostBinding('class') class = 'd-block mt-4';
 
-  ngOnInit() {}
-
-  agregar(nombre: string) {
-    // Aquí puedes llamar al servicio que agrega y despacha
-  }
+  tracking$: Observable<Record<string, number>> = inject(Store).select(selectTracking);
 }
+

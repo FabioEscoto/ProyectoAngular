@@ -1,0 +1,14 @@
+<mgl-map
+  [style]="'mapbox://styles/mapbox/streets-v12'"
+  [zoom]="[12]"
+  [center]="[lng, lat]"
+  [interactive]="true"
+  style="width: 100%; height: 400px"
+>
+  <mgl-marker [lngLat]="[lng, lat]">
+    <mgl-popup>
+      <div (click)="alert(mostrarMensaje())">Haz clic aquí</div>
+    </mgl-popup>
+  </mgl-marker>
+</mgl-map>
+

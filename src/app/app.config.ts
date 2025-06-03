@@ -1,15 +1,18 @@
-// src/app/app.config.ts
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { provideStore } from '@ngrx/store';
-import { routes } from './app.routes';
-import { votacionReducer } from './state/votacion.reducer';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideStore({ votacion: votacionReducer }) // 👈 registro del store
+    // otros providers
+    provideAnimations()
   ]
 };
+
+import { provideStore } from '@ngrx/store';
+import { trackingReducer } from './state/tracking.reducer';
+import { votacionReducer } from './state/votacion.reducer';
+
+provideStore({
+  votacion: votacionReducer,
+  tracking: trackingReducer
+});
 
